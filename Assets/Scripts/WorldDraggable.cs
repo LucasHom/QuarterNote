@@ -25,9 +25,17 @@ public class WorldDraggable : MonoBehaviour
     //tracking files
     public static int ActiveFiles = 0;
 
+    //Sprites
+    [Header("Sprite Settings")]
+    [SerializeField] public List<Sprite> typeSprites = new List<Sprite>();
+
+    private SpriteRenderer spriteRenderer;
+    private Dictionary<string, Sprite> typeSpriteMap = new Dictionary<string, Sprite>();
+
     void Start()
     {
         ActiveFiles++;
+        spriteRenderer = GetComponent<SpriteRenderer>();
         cam = Camera.main;
 
         //types
@@ -37,10 +45,47 @@ public class WorldDraggable : MonoBehaviour
         Rigidbody2D rb2d = GetComponent<Rigidbody2D>();
         rb2d.isKinematic = true;
 
-
         // LayerMask.GetMask("SortGroup") gives you a bitmask that includes ONLY that layer
         sortGroupMask = LayerMask.GetMask("SortGroup");
+    }
 
+
+    // Builds a dictionary mapping each acceptable type to its corresponding sprite.
+    private void BuildTypeSpriteDictionary()
+    {
+        typeSpriteMap.Clear();
+
+        // Ensure the lists match in length
+        if (acceptableTypes.Count != typeSprites.Count)
+        {
+            Debug.LogWarning("acceptableTypes and typeSprites must have the same length!");
+            return;
+        }
+
+        for (int i = 0; i < acceptableTypes.Count; i++) //Make this random
+        {
+            string key = acceptableTypes[i];
+            Sprite value = typeSprites[i];
+
+            if (!typeSpriteMap.ContainsKey(key))
+                typeSpriteMap.Add(key, value);
+        }
+    }
+
+
+    // Sets the sprite based on the object's current type string.
+    public void UpdateSpriteByType()
+    {
+        if (spriteRenderer == null) return;
+
+        if (typeSpriteMap.TryGetValue(type, out Sprite newSprite))
+        {
+            spriteRenderer.sprite = newSprite;
+        }
+        else
+        {
+            Debug.LogWarning($"No sprite found for type '{type}'");
+        }
     }
 
     private void OnMouseDown()
