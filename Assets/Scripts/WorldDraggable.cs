@@ -24,6 +24,7 @@ public class WorldDraggable : MonoBehaviour
 
     //tracking files
     public static int ActiveFiles = 0;
+    public SortGroup sortGroup;
 
     //Sprites
     [Header("Sprite Settings")]
@@ -105,22 +106,34 @@ public class WorldDraggable : MonoBehaviour
     private void OnMouseUp()
     {
         isDragging = false;
-
-        // Raycast from camera through the mouse position
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-
-        // This ray will ONLY consider colliders on the "SortGroup" layer
-        RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity, sortGroupMask);
-
-        if (hit.collider != null)
+        if (sortGroup != null)
         {
-            // Get the SortGroup component on the hit object (or its parent)
-            SortGroup sortGroup = hit.collider.GetComponentInParent<SortGroup>();
-            if (sortGroup != null)
+            if (sortGroup.objTouching != null)
             {
-                sortGroup.TrySort(this);
+                WorldDraggable draggable = sortGroup.objTouching.GetComponent<WorldDraggable>();
+                if (draggable != null)
+                {
+                    sortGroup.TrySort(draggable);
+                }
             }
         }
+
+
+        //// Raycast from camera through the mouse position
+        //Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+        //// This ray will ONLY consider colliders on the "SortGroup" layer
+        //RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity, sortGroupMask);
+
+        //if (hit.collider != null)
+        //{
+        //    // Get the SortGroup component on the hit object (or its parent)
+        //    SortGroup sortGroup = hit.collider.GetComponentInParent<SortGroup>();
+        //    if (sortGroup != null)
+        //    {
+        //        sortGroup.TrySort(this);
+        //    }
+        //}
     }
 
     void Update()

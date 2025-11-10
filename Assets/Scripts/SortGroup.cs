@@ -6,6 +6,8 @@ public class SortGroup : MonoBehaviour
     [SerializeField] private string type = default;
     private Vector3 originalScale;
 
+    public GameObject objTouching;
+
     private void Start()
     {
         originalScale = transform.localScale;
@@ -13,13 +15,17 @@ public class SortGroup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        objTouching = col.gameObject;
+        objTouching.GetComponent<WorldDraggable>().sortGroup = this;
         transform.localScale = originalScale * 1.1f; // enlarge visually when hovering over with file
     }
 
     private void OnTriggerExit2D(Collider2D col)
     {
+        objTouching = null;
         transform.localScale = originalScale; // reset scale
     }
+
 
     public void TrySort(WorldDraggable draggable)
     {
