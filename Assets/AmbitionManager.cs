@@ -45,6 +45,9 @@ public class AmbitionManager : MonoBehaviour
         readyToRecord = true;
         RecordIcon.SetActive(true);
         RythGame.SetActive(false);
+        GetComponent<SoundManagerScript>().shouldMusicPlay = false;
+        GetComponent<SoundManagerScript>().metronomeRunning = false;
+
     }
 
     public void ShowRecordIconFail()
