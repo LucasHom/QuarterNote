@@ -64,6 +64,7 @@ public class NoteSpawnScript : MonoBehaviour
         greyscaleScript.SetGreyscalePercentage(greyscale);
 
         ambitionManager.ShowRecordIcon();
+        ambitionManager.GetComponent<SoundManagerScript>().shouldMusicPlay = false;
     }
 
     private void SpawnNote()
