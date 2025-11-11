@@ -1993,6 +1993,7 @@ GameObject:
   - component: {fileID: 1466661637}
   - component: {fileID: 1466661638}
   - component: {fileID: 1466661639}
+  - component: {fileID: 1466661640}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2087,6 +2088,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RythGame: {fileID: 848921153372598351}
   RecordIcon: {fileID: 1164030871}
+--- !u!114 &1466661640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466661634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59dc0a3d3be61de45bc59d886668bd61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffects:
+  - name: correct
+    clip: {fileID: 8300000, guid: 2f71bd53abe6b48408b52aa410d7a5ff, type: 3}
+  - name: incorrect
+    clip: {fileID: 8300000, guid: 934c98e0b4926c4419a2a3fcfbbe9d9d, type: 3}
 --- !u!1 &1494341701
 GameObject:
   m_ObjectHideFlags: 0
@@ -3550,7 +3568,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1001 &3851037757916960524
 PrefabInstance:
   m_ObjectHideFlags: 0

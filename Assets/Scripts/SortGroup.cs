@@ -34,10 +34,12 @@ public class SortGroup : MonoBehaviour
         if (draggable.type == type)
         {
             Debug.Log("Correctly sorted object of type: " + type);
+            SFXManager.Instance.PlaySFX("correct");
         }
         else
         {
             GameManager.numIncorrect++;
+            SFXManager.Instance.PlaySFX("incorrect");
         }
 
         Destroy(draggable.gameObject);
