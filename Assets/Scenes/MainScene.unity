@@ -524,7 +524,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6e751c0dd890b41b99a5fa864d964da, type: 3}
   m_Name: 
@@ -1887,6 +1887,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   metronome: {fileID: 1901446826856332573, guid: c8b79f1236a765b748bb1d47bceae25c, type: 3}
   drumLoop: {fileID: 1901446826856332573, guid: 674d4e9b6688a89dabc93aa5a7e34daf, type: 3}
+  bass: {fileID: 9060696876850480483, guid: be84b631961e3ad4d8c2617380f120d4, type: 3}
+  melody: {fileID: 5545821847476351606, guid: cfb220048eee4ec53b610b0130e5f60a, type: 3}
+  shouldMusicPlay: 0
+  currentTrackIndex: 0
 --- !u!114 &1466661639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3289,7 +3293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1001 &3851037757916960524
 PrefabInstance:
   m_ObjectHideFlags: 0
