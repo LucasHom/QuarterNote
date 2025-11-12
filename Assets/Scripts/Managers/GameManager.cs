@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
                 case 0:
                     
                     files = 10;
-                    ambitionManager.ShowRecordIcon();
+                    ambitionManager.ShowRecordIcon(); // REMOVE BEFORE BUILDING
                     break;
 
                 case 1:
@@ -93,6 +93,7 @@ public class GameManager : MonoBehaviour
 
                 case 2:
                     files = 14;
+                    ambitionManager.ShowRecordIcon();
                     break;
 
                 case 3:
@@ -108,6 +109,7 @@ public class GameManager : MonoBehaviour
                     isDropboxImage.enabled = true;
                     WorldDraggable.acceptableTypes.Add("dropbox");
                     WorldDraggable.typeSprites.Add(triangleSprite);
+                    GetComponent<SoundManagerScript>().currentTrackIndex++;
                     break;
 
                 case 5:
@@ -116,6 +118,7 @@ public class GameManager : MonoBehaviour
 
                 case 6:
                     files = 12;
+                    GetComponent<SoundManagerScript>().currentTrackIndex++;
                     break;
 
                 case 7:

@@ -40,7 +40,7 @@ public class SoundManagerScript : MonoBehaviour
                 musicStarted = true;
                 StopTrack(); // stop metronome
                 StartTrack(trackList[currentTrackIndex]);
-                currentTrackIndex++; // change this to be based on next game stage (based on deadlines)
+                // currentTrackIndex++; // change this to be based on next game stage (based on deadlines)
             }
         }
         else
