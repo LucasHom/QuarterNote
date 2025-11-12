@@ -18,7 +18,7 @@ public class NoteSpawnScript : MonoBehaviour
 
     [SerializeField] private GameObject cam;
     private float greyscale = 1.0f;
-    private float decreaseValue = 1.0f / 3.0f;
+    private float decreaseValue = 1.0f / 12.0f;
 
     private void OnEnable()
     {
