@@ -9,6 +9,7 @@ public class AmbitionManager : MonoBehaviour
     [SerializeField] private GameObject RythGame;
     [SerializeField] private GameObject RecordIcon;
     [SerializeField] private GameObject GameOverScreen;
+    [SerializeField] private GameObject WinScreen;
 
     private NoteSpawnScript noteSpawnScript;
 
@@ -66,11 +67,14 @@ public class AmbitionManager : MonoBehaviour
         GameOverScreen.SetActive(true);
         RythGame.SetActive(false);
         RecordIcon.SetActive(false);
+        Time.timeScale = 0f;
     }
 
-    public void GameReset()
+    public void YouWin()
     {
-        Debug.Log("game resetting");
-        SceneManager.LoadScene("MainScene");
+        WinScreen.SetActive(true);
+        RythGame.SetActive(false);
+        RecordIcon.SetActive(false);
+        Time.timeScale = 0f;
     }
 }

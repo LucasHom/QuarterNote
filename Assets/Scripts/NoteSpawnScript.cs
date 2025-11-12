@@ -55,6 +55,7 @@ public class NoteSpawnScript : MonoBehaviour
 
         yield return new WaitUntil(() => NoteScript.ActiveNotes <= 0);
         yield return new WaitForSeconds(1f);
+
         //create confetti effect here if success
         if (greyscale >= decreaseValue-0.1f)
         {
@@ -62,6 +63,12 @@ public class NoteSpawnScript : MonoBehaviour
         }
         GreyscaleScript greyscaleScript = cam.GetComponent<GreyscaleScript>();
         greyscaleScript.SetGreyscalePercentage(greyscale);
+        Debug.Log(greyscale);
+        if (greyscale <= 0)
+        {
+            ambitionManager.YouWin();
+            yield break;
+        }
 
         ambitionManager.ShowRecordIcon();
         ambitionManager.GetComponent<SoundManagerScript>().shouldMusicPlay = false;

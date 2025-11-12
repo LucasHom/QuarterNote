@@ -44,7 +44,16 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Time.timeScale = 1f;
+        //reset static vars for restarting game
+        numIncorrect = 0;
+        WorldDraggable.ActiveFiles = 0;
+        WorldDraggable.acceptableTypes.Clear();
+        WorldDraggable.typeSprites.Clear();
+        WorldDraggable.typeSpriteMap.Clear();
+        NoteScript.ActiveNotes = 0;
+        NoteScript.lost = false;
+
 
 
         equalsText.text = "=\n=\n";
@@ -52,7 +61,7 @@ public class GameManager : MonoBehaviour
         dropboxFolder.SetActive(false);
         isDropboxImage.enabled = false;
 
-        numIncorrect = 0;
+        
         StartCoroutine(GameLoop());
     }
 
@@ -125,10 +134,11 @@ public class GameManager : MonoBehaviour
 
             WorldDraggable.BuildTypeSpriteDictionary();
 
-
             yield return StartCoroutine(WorkShift(files));
             
         }
+
+        ambitionManager.GameOver();
 
     }
 
@@ -166,10 +176,6 @@ public class GameManager : MonoBehaviour
             Debug.Log("Shift over, you lose!");
             // Time.timeScale = 0f;
             ambitionManager.GameOver();
-        }
-        else
-        {
-            Debug.Log(percentCorrect + "%");
         }
         
     }

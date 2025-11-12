@@ -11,7 +11,7 @@ public class BarScript : MonoBehaviour
     private Collider2D currentCollider;
     public int notesHit = 0;
 
-    //[SerializeField] private AmbitionManager ambitionManager;
+    [SerializeField] private AmbitionManager ambitionManager;
 
 
     // Start is called before the first frame update
@@ -34,6 +34,11 @@ public class BarScript : MonoBehaviour
                 Destroy(currentCollider.gameObject);
                 notesHit++;
             }
+        }
+        else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.F))
+        {
+            NoteScript.lost = true;
+            ambitionManager.ShowRecordIconFail();
         }
 
         if (notesHit == NoteSpawner.gameObject.GetComponent<NoteSpawnScript>().totalNotes)
