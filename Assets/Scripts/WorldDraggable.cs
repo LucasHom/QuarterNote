@@ -133,8 +133,7 @@ public class WorldDraggable : MonoBehaviour
             Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
             currentlyDragging.ContinueDrag(mousePos);
         }
-
-        if (Input.GetMouseButtonUp(0) && currentlyDragging != null)
+        else if (Input.GetMouseButtonUp(0) && currentlyDragging != null)
         {
             currentlyDragging.EndDrag();
         }
